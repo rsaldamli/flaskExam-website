@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Admin Panel - Quiz App</title>
+</head>
+<body>
+    <h1>Admin Panel</h1>
+    <h2>Yeni Soru Ekle</h2>
+    <form method="post" action="{{ url_for('admin') }}">
+        <label for="question">Soru:</label>
+        <input type="text" id="question" name="question" required><br>
+        <label for="option1">Seçenek 1:</label>
+        <input type="text" id="option1" name="option1" required><br>
+        <label for="option2">Seçenek 2:</label>
+        <input type="text" id="option2" name="option2" required><br>
+        <label for="option3">Seçenek 3:</label>
+        <input type="text" id="option3" name="option3" required><br>
+        <label for="option4">Seçenek 4:</label>
+        <input type="text" id="option4" name="option4" required><br>
+        <label for="answer">Doğru Cevap:</label>
+        <input type="text" id="answer" name="answer" required><br>
+        <button type="submit">Ekle</button>
+    </form>
+
+    <h2>Mevcut Sorular</h2>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Soru</th>
+            <th>Seçenek 1</th>
+            <th>Seçenek 2</th>
+            <th>Seçenek 3</th>
+            <th>Seçenek 4</th>
+            <th>Doğru Cevap</th>
+            <th>İşlem</th>
+        </tr>
+        {% for question in questions %}
+        <tr>
+            <td>{{ question.id }}</td>
+            <td>{{ question.question }}</td>
+            <td>{{ question.option1 }}</td>
+            <td>{{ question.option2 }}</td>
+            <td>{{ question.option3 }}</td>
+            <td>{{ question.option4 }}</td>
+            <td>{{ question.answer }}</td>
+            <td>
+                <form method="post" action="{{ url_for('delete_question', question_id=question.id) }}" style="display:inline;">
+                    <button type="submit">Sil</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <div class="createdby">
+        <p >Created by RAMAZAN SALDAMLI</p>
+    </div>
+</body>
+</html>

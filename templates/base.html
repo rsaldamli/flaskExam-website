@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="header">
+        <h1>Quiz App</h1>
+        <div>
+            Mevcut Skor: {{ session.get('score', 0) }}
+        </div>
+    </div>
+    <div class="highscore">
+        En Yüksek Skor: {{ session.get('highscore', 0) }}
+    </div>
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+        <p>Created by <a href="{{ url_for('about') }}">[RAMAZAN SALDAMLI]</a></p>
+    </footer>
+</body>
+</html>

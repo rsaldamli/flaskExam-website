@@ -1,0 +1,8 @@
+<!-- start.html -->
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Quiz'e Başla</h2>
+    <form method="post" action="{{ url_for('start') }}">
+        <button type="submit">Sınava Başla</button>
+    </form>
+{% endblock %}

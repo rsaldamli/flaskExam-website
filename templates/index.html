@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block content %}
+<!--<!DOCTYPE html>-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App - Anasayfa</title>
+</head>
+<body>
+    <h1>Quiz App'e Hoş Geldiniz!</h1>
+    <p>Bu uygulamada bilgisayar görüsü hakkında test yapabilirsiniz. Veya soru ekleme panelinden sorular ekleyebilirsiniz</p>
+
+    <!-- Admin Paneline Git Butonu -->
+    <a href="{{ url_for('admin') }}">
+        <button>Soru ekleme paneli</button>
+    </a>
+
+    <!-- Sınava Başla Butonu -->
+    <a href="{{ url_for('quiz') }}">
+        <button>Sınava Başla</button>
+    </a>
+
+    <!-- Delete Highscore Butonu -->
+    <form action="{{ url_for('delete_highscore') }}" method="post" style="margin-top: 20px;">
+        <button type="submit">En Yüksek Skoru Sil</button>
+    </form>
+</body>
+<!--</html>-->
+{% endblock %}

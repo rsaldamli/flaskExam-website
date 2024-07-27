@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Quiz</h2>
+    <form method="post" action="{{ url_for('result') }}">
+        {% for i, question in enumerate(questions) %}
+            <div>
+                <p>{{ i + 1 }}. {{ question.question }}</p>
+                {% for option in [question.option1, question.option2, question.option3, question.option4] %}
+                    <label>
+                        <input type="radio" name="question-{{ i }}" value="{{ option }}" required> {{ option }}
+                    </label><br>
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <button type="submit">Sonuçları Gönder</button>
+    </form>
+{% endblock %}
